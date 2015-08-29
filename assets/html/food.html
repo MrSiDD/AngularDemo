@@ -1,0 +1,37 @@
+<div>
+	<h2>Food</h2>
+
+	<div class="add-food">
+		Day: <select name="day" ng-model="ctrl.foodEntry.day" ng-change="ctrl.changeDay()">
+			<option></option>
+			<option value="monday">Monday</option>
+			<option value="tuesday">Tuesday</option>
+			<option value="wednesday">Wednesday</option>
+			<option value="thursday">Thursday</option>
+			<option value="friday">Friday</option>
+		</select> <br />
+		Soup: <input type="text" name="soup" ng-model="ctrl.foodEntry.soup" /> <br />
+		Lunch: <input type="text" name="lunch" ng-model="ctrl.foodEntry.lunch" /> <br />
+		Desert: <input type="text" name="desert" ng-model="ctrl.foodEntry.desert" /> <br />
+		<button ng-click="ctrl.addFood()">Add</button>
+	</div>
+
+	<table ng-show="ctrl.foodReady">
+		<thead>
+			<tr>
+				<th>Day</th>
+				<th>Soup</th>
+				<th>Lunch</th>
+				<th>Desert</th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr ng-repeat="(day, overview) in ctrl.food">
+				<td>{{day}}</td>
+				<td>{{overview.soup}}</td>
+				<td>{{overview.lunch}}</td>
+				<td>{{overview.desert}}</td>
+			</tr>
+		</tbody>
+	</table>
+</div>
