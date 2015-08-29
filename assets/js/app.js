@@ -30,6 +30,7 @@ app.service('demoService', function($http) {
 
 app.controller('AppController', function(demoService, $q) {
 	var self = this;
+	var food = demoService.getFood();
 
 	self.children = [];
 
@@ -37,22 +38,25 @@ app.controller('AppController', function(demoService, $q) {
 		.then(function(responses) {
 			self.children = responses[0];
 		});
+
+	this.updateFood = function(obj) {
+		demoService.setFoodForDay(obj);
+	};
 });
 
 app.controller('ChildrenController', function() {});
 
 app.controller('ChildController', function() {});
 
-app.controller('FoodController', function(demoService) {
+app.controller('FoodController', function(demoService, $scope) {
 	var self = this;
 	self.food = demoService.getFood();
 	self.foodEntry = null;
 	self.foodReady = false;
 
 	this.addFood = function() {
-		demoService.setFoodForDay(self.foodEntry);
+		$scope.foodUpdate({obj: self.foodEntry});
 		self.foodEntry = {};
-
 		self.foodReady = true;
 	};
 
@@ -89,7 +93,10 @@ app.directive('demoChild', function() {
 
 app.directive('demoFood', function() {
 	return {
-		scope: {},
+		scope: {
+			food: '=',
+			foodUpdate: '&update'
+		},
 		restrict: 'E',
 		replace: true,
 		templateUrl: './assets/html/food.html',
