@@ -44,9 +44,37 @@ app.controller('AppController', function(demoService, $q) {
 	};
 });
 
-app.controller('ChildrenController', function() {});
+app.controller('ChildrenController', function() {
+	var self = this;
+	self.children = [];
 
-app.controller('ChildController', function() {});
+	this.addChild = function(child) {
+		self.children.push(child);
+	};
+
+	this.switchChild = function(theNewChild) {
+		angular.forEach(this.children, function(child) {
+			child.ctrl.selected = false;
+	    });
+	    theNewChild.selected = true;
+	};
+});
+
+app.controller('ChildController', function($scope) {
+	var self = this;
+	this.selected = false;
+	this.days = {
+		monday: {},
+		tuesday: {},
+		wednesday: {},
+		thursday: {},
+		friday: {}
+	};
+
+	this.openChild = function() {
+		$scope.parentCtrl.switchChild(this);	
+	};
+});
 
 app.controller('FoodController', function(demoService, $scope) {
 	var self = this;
@@ -70,7 +98,7 @@ app.controller('FoodController', function(demoService, $scope) {
 app.directive('demoChildren', function() {
 	return {
 		scope: {
-			childrenList: '=children'
+			childrenList: '=children' // internal variable name differs from outside attribute
 		},
 		restrict: 'E',
 		replace: true,
@@ -81,6 +109,7 @@ app.directive('demoChildren', function() {
 
 app.directive('demoChild', function() {
 	return {
+    	require: '^demoChildren',
 		scope: {
 			child: '=',
 			name: '='
@@ -88,7 +117,11 @@ app.directive('demoChild', function() {
 		restrict: 'E',
 		replace: true,
 		templateUrl: './assets/html/child.html',
-		controller: 'ChildController as ctrl'
+		controller: 'ChildController as ctrl', 
+		link: function(scope, element, attrs, parentCtrl) {
+			parentCtrl.addChild(scope);
+			scope.parentCtrl = parentCtrl;
+		}
 	}
 });
 
@@ -96,7 +129,7 @@ app.directive('demoFood', function() {
 	return {
 		scope: {
 			food: '=',
-			foodUpdate: '&update'
+			foodUpdate: '&update' // set callback method
 		},
 		restrict: 'E',
 		replace: true,
