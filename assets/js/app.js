@@ -23,7 +23,7 @@ app.service('demoService', function($http) {
 		self.food[obj.day] = {
 			soup: obj.soup,
 			lunch: obj.lunch,
-			desert: obj.desert
+			dessert: obj.dessert
 		};
 	};
 });

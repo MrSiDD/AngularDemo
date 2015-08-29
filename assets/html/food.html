@@ -23,8 +23,8 @@
 			<input type="text" name="lunch" ng-model="ctrl.foodEntry.lunch" class="form-control" />
 		</div>
 		<div class="form-group">
-			<label>Desert</label>
-			<input type="text" name="desert" ng-model="ctrl.foodEntry.desert" class="form-control" />
+			<label>Dessert</label>
+			<input type="text" name="desert" ng-model="ctrl.foodEntry.dessert" class="form-control" />
 		</div>
 		<div class="form-group">
 			<button ng-click="ctrl.addFood()" class="btn">Add</button>
@@ -38,7 +38,7 @@
 				<th>Day</th>
 				<th>Soup</th>
 				<th>Lunch</th>
-				<th>Desert</th>
+				<th>Dessert</th>
 			</tr>
 		</thead>
 		<tbody>
@@ -46,7 +46,7 @@
 				<td>{{day}}</td>
 				<td>{{overview.soup}}</td>
 				<td>{{overview.lunch}}</td>
-				<td>{{overview.desert}}</td>
+				<td>{{overview.dessert}}</td>
 			</tr>
 		</tbody>
 	</table>
