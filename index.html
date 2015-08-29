@@ -8,15 +8,21 @@
     <title>Angular Master Class Exercise</title>
     <meta name="mobile-web-app-capable" content="yes">
 
-    <script src="./assets/js/angular/angular.js"></script>
+    <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.4.3/angular.min.js"></script>
     <script src="./assets/js/app.js"> </script>
+    <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css">
     <link rel="stylesheet" href="./assets/css/all.css">
   </head>
   <body ng-app="app" ng-controller="AppController as appCtrl">
-
-    <demo-children></demo-children>
-
-    <demo-food></demo-food>
-
+    <div class="container">
+      <div class="row">
+        <div class="col-md-8">
+          <demo-food></demo-food>
+        </div>
+        <div class="col-md-4">
+          <demo-children></demo-children>
+        </div>
+      </div>
+    </div>
   </body>
 </html>

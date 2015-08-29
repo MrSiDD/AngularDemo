@@ -32,9 +32,7 @@ app.service('demoService', function($http) {
 	};
 });
 
-app.controller('AppController', function() {
-
-});
+app.controller('AppController', function() {});
 
 app.controller('ChildrenController', function(demoService, $q) {
 	var self = this;

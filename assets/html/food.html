@@ -2,21 +2,37 @@
 	<h2>Food</h2>
 
 	<div class="add-food">
-		Day: <select name="day" ng-model="ctrl.foodEntry.day" ng-change="ctrl.changeDay()">
-			<option></option>
-			<option value="monday">Monday</option>
-			<option value="tuesday">Tuesday</option>
-			<option value="wednesday">Wednesday</option>
-			<option value="thursday">Thursday</option>
-			<option value="friday">Friday</option>
-		</select> <br />
-		Soup: <input type="text" name="soup" ng-model="ctrl.foodEntry.soup" /> <br />
-		Lunch: <input type="text" name="lunch" ng-model="ctrl.foodEntry.lunch" /> <br />
-		Desert: <input type="text" name="desert" ng-model="ctrl.foodEntry.desert" /> <br />
-		<button ng-click="ctrl.addFood()">Add</button>
+		<form>
+		<div class="form-group">
+			<label>Day</label>
+			<select name="day" ng-model="ctrl.foodEntry.day" ng-change="ctrl.changeDay()" class="form-control">
+				<option></option>
+				<option value="monday">Monday</option>
+				<option value="tuesday">Tuesday</option>
+				<option value="wednesday">Wednesday</option>
+				<option value="thursday">Thursday</option>
+				<option value="friday">Friday</option>
+			</select>
+		</div>
+		<div class="form-group">
+			<label>Soup</label>
+			<input type="text" name="soup" ng-model="ctrl.foodEntry.soup" class="form-control" />
+		</div>
+		<div class="form-group">
+			<label>Lunch</label>
+			<input type="text" name="lunch" ng-model="ctrl.foodEntry.lunch" class="form-control" />
+		</div>
+		<div class="form-group">
+			<label>Desert</label>
+			<input type="text" name="desert" ng-model="ctrl.foodEntry.desert" class="form-control" />
+		</div>
+		<div class="form-group">
+			<button ng-click="ctrl.addFood()" class="btn">Add</button>
+		</div>
+		</form>
 	</div>
 
-	<table ng-show="ctrl.foodReady">
+	<table ng-show="ctrl.foodReady" class="table">
 		<thead>
 			<tr>
 				<th>Day</th>
