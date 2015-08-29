@@ -3,11 +3,7 @@ var app = angular.module('app', []);
 app.service('demoService', function($http) {
 	var self = this;
 	self.children = [];
-	self.food = {};/*{saturday: {
-		soup: 'sat soup',
-		lunch: 'sat lunch',
-		desert: 'sat desert'
-	}};*/
+	self.food = {};
 
 	this.getChildren = function() {
 		return $http
@@ -32,24 +28,20 @@ app.service('demoService', function($http) {
 	};
 });
 
-app.controller('AppController', function() {});
-
-app.controller('ChildrenController', function(demoService, $q) {
+app.controller('AppController', function(demoService, $q) {
 	var self = this;
+
 	self.children = [];
 
 	$q.all([demoService.getChildren()])
 		.then(function(responses) {
 			self.children = responses[0];
 		});
-
 });
 
-app.controller('ChildController', function($scope) {
-	$scope.getChild = function() {
-		return $scope.child;
-	};
-});
+app.controller('ChildrenController', function() {});
+
+app.controller('ChildController', function() {});
 
 app.controller('FoodController', function(demoService) {
 	var self = this;
@@ -73,7 +65,9 @@ app.controller('FoodController', function(demoService) {
 
 app.directive('demoChildren', function() {
 	return {
-		scope: {},
+		scope: {
+			childrenList: '=children'
+		},
 		restrict: 'E',
 		replace: true,
 		templateUrl: './assets/html/children.html',
