@@ -52,11 +52,13 @@ app.controller('ChildrenController', function() {
 		self.children.push(child);
 	};
 
-	this.switchChild = function(theNewChild) {
+	this.switchChild = function(theNewChild, openNewChild) {
 		angular.forEach(this.children, function(child) {
 			child.ctrl.selected = false;
 	    });
-	    theNewChild.selected = true;
+	    if (openNewChild) {
+		    theNewChild.selected = true;
+		}
 	};
 });
 
@@ -72,7 +74,7 @@ app.controller('ChildController', function($scope) {
 	};
 
 	this.openChild = function() {
-		$scope.parentCtrl.switchChild(this);	
+		$scope.parentCtrl.switchChild(this, !self.selected);	
 	};
 });
 
