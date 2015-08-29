@@ -1,14 +1,35 @@
 <div class="child">
 	<h4 ng-click="ctrl.openChild()">{{name}}</h4>
 	<div ng-show="ctrl.selected">
-		<div ng-repeat="(day, details) in ctrl.days">
-			<h5>
-				{{day}} 
-				<span>
-					<input type="checkbox" ng-model="details.present" />
-				</span>
-			</h5>
-			<div ng-if="details.present">food stuff</div>
-		</div>
+		<table class="table">
+			<thead>
+				<tr>
+					<th>Day</th>
+					<th>Present?</th>
+					<th>Soup?</th>
+					<th>Lunch?</th>
+					<th>Dessert?</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr ng-repeat="(day, details) in ctrl.days">
+					<td>
+						{{day}}
+					</td>
+					<td>
+						<input type="checkbox" ng-model="details.present" />
+					</td>
+					<td>
+						<input type="checkbox" ng-model="details.soup" ng-if="details.present" />
+					</td>
+					<td>
+						<input type="checkbox" ng-model="details.lunch" ng-if="details.present" />
+					</td>
+					<td>
+						<input type="checkbox" ng-model="details.dessert" ng-if="details.present" />
+					</td>
+				</tr>
+			</tbody>
+		</table>
 	</div>
 </div>
