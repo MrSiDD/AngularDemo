@@ -82,7 +82,8 @@ app.directive('demoChildren', function() {
 app.directive('demoChild', function() {
 	return {
 		scope: {
-			child: '='
+			child: '=',
+			name: '='
 		},
 		restrict: 'E',
 		replace: true,
