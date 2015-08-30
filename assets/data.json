@@ -1,16 +1,20 @@
 {
   "data": {
-    "Trien": {
-      "id": 1
+    "trien": {
+      "id": 1,
+      "name": "Trien"
     },
-    "Fien": {
-      "id": 2
+    "fien": {
+      "id": 2,
+      "name": "Fien"
     },
-    "Sien": {
-      "id": 3
+    "sien": {
+      "id": 3,
+      "name": "Sien"
     },
-    "Mien": {
-      "id": 4
+    "mien": {
+      "id": 4,
+      "name": "Mien"
     }
   }
 }

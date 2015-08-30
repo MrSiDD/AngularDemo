@@ -1,7 +1,7 @@
 <div class="child">
 	<h4>
-		<span ng-click="ctrl.openChild()" class="label">{{name}}</span>
-		<a class="pull-right" ui-sref="children.details({child: name})"><span class="glyphicon glyphicon-info-sign"></span></a>
+		<span ng-click="ctrl.openChild()" class="label">{{child.name}}</span>
+		<a class="pull-right" ui-sref="details({child: key})"><span class="glyphicon glyphicon-info-sign"></span></a>
 	</h4>
 	<div ng-show="ctrl.selected">
 		<table class="table">
@@ -20,16 +20,16 @@
 						{{day}}
 					</td>
 					<td>
-						<input type="checkbox" ng-model="details.present" />
+						<input type="checkbox" ng-model="child.details[day].present" />
 					</td>
 					<td>
-						<input type="checkbox" ng-model="details.soup" ng-if="details.present" />
+						<input type="checkbox" ng-model="child.details[day].soup" ng-if="child.details[day].present" />
 					</td>
 					<td>
-						<input type="checkbox" ng-model="details.lunch" ng-if="details.present" />
+						<input type="checkbox" ng-model="child.details[day].lunch" ng-if="child.details[day].present" />
 					</td>
 					<td>
-						<input type="checkbox" ng-model="details.dessert" ng-if="details.present" />
+						<input type="checkbox" ng-model="child.details[day].dessert" ng-if="child.details[day].present" />
 					</td>
 				</tr>
 			</tbody>

@@ -26,6 +26,14 @@ app.service('demoService', function($http) {
 			dessert: obj.dessert
 		};
 	};
+
+	this.getFoodForDay = function(day) {
+		return self.food[day] || {};
+	};
+
+	this.getChild = function(name) {
+		return self.children[name];
+	};
 });
 
 app.controller('AppController', function(demoService, $q) {
@@ -64,6 +72,7 @@ app.controller('ChildrenController', function() {
 
 app.controller('ChildController', function($scope) {
 	var self = this;
+	this.index = this.name;
 	this.selected = false;
 	this.days = {
 		monday: {},
@@ -97,6 +106,18 @@ app.controller('FoodController', function(demoService, $scope) {
 	};
 });
 
+app.controller('DetailsController', function(demoService, $stateParams) {
+	var self = this;
+	self.child = demoService.getChild($stateParams.child);
+	this.days = ['monday', 'tuesday', 'wednesday', 'thursday', 'friday'];
+
+	this.getFoodFor = function(day, type) {
+		var food = demoService.getFoodForDay(day);
+
+		return food[type];
+	};
+});
+
 app.directive('demoChildren', function() {
 	return {
 		scope: {
@@ -114,7 +135,7 @@ app.directive('demoChild', function() {
     	require: '^demoChildren',
 		scope: {
 			child: '=',
-			name: '='
+			key: '='
 		},
 		restrict: 'E',
 		replace: true,
@@ -153,9 +174,11 @@ app.config(function($stateProvider, $urlRouterProvider) {
     templateUrl: './assets/html/state-children.html',
     url: '/children'
   });
-  $stateProvider.state('children.details', {
+  $stateProvider.state('details', {
   	templateUrl: './assets/html/state-child-details.html',
-  	url: '/details/:child'
+  	url: '/details/:child',
+  	controller: 'DetailsController',
+  	controllerAs: 'ctrl'
   })
 
   $urlRouterProvider.otherwise('/');
