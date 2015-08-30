@@ -1,5 +1,8 @@
 <div class="child">
-	<h4 ng-click="ctrl.openChild()">{{name}}</h4>
+	<h4>
+		<span ng-click="ctrl.openChild()" class="label">{{name}}</span>
+		<a class="pull-right" ui-sref="children.details({child: name})"><span class="glyphicon glyphicon-info-sign"></span></a>
+	</h4>
 	<div ng-show="ctrl.selected">
 		<table class="table">
 			<thead>

@@ -142,20 +142,21 @@ app.directive('demoFood', function() {
 
 app.config(function($stateProvider, $urlRouterProvider) {
   $stateProvider.state('home', {
-    //controller: 'CitiesController as citiesCtrl',
     templateUrl: './assets/html/state-home.html',
     url: '/'
   });  
   $stateProvider.state('food', {
-    //controller: 'CitiesController as citiesCtrl',
     templateUrl: './assets/html/state-food.html',
     url: '/food'
   });
   $stateProvider.state('children', {
-    //controller: 'CitiesController as citiesCtrl',
     templateUrl: './assets/html/state-children.html',
     url: '/children'
   });
+  $stateProvider.state('children.details', {
+  	templateUrl: './assets/html/state-child-details.html',
+  	url: '/details/:child'
+  })
 
   $urlRouterProvider.otherwise('/');
 

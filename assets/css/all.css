@@ -6,3 +6,13 @@
 ul.nav a:hover {
 	cursor: pointer;
 }
+
+.child .label {
+	color: #333;
+}
+.child .label:hover {
+	cursor: pointer;
+}
+.child h4 a:hover {
+	cursor: pointer;
+}
