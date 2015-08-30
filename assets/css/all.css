@@ -1,0 +1,8 @@
+.intro-ng-logo {
+	background: url(//angular.io/resources/images/logos/standard/shield-large@2x.png) center center no-repeat; 
+	height: 400px;
+}
+
+ul.nav a:hover {
+	cursor: pointer;
+}

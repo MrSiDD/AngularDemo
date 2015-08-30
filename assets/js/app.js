@@ -1,4 +1,4 @@
-var app = angular.module('app', []);
+var app = angular.module('app', ['ui.router']);
 
 app.service('demoService', function($http) {
 	var self = this;
@@ -138,4 +138,25 @@ app.directive('demoFood', function() {
 		templateUrl: './assets/html/food.html',
 		controller: 'FoodController as ctrl'
 	}
+});
+
+app.config(function($stateProvider, $urlRouterProvider) {
+  $stateProvider.state('home', {
+    //controller: 'CitiesController as citiesCtrl',
+    templateUrl: './assets/html/state-home.html',
+    url: '/'
+  });  
+  $stateProvider.state('food', {
+    //controller: 'CitiesController as citiesCtrl',
+    templateUrl: './assets/html/state-food.html',
+    url: '/food'
+  });
+  $stateProvider.state('children', {
+    //controller: 'CitiesController as citiesCtrl',
+    templateUrl: './assets/html/state-children.html',
+    url: '/children'
+  });
+
+  $urlRouterProvider.otherwise('/');
+
 });

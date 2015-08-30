@@ -9,12 +9,22 @@
     <meta name="mobile-web-app-capable" content="yes">
 
     <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.4.3/angular.min.js"></script>
+    <script src="//angular-ui.github.io/ui-router/release/angular-ui-router.min.js"></script>
     <script src="./assets/js/app.js"> </script>
     <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css">
     <link rel="stylesheet" href="./assets/css/all.css">
   </head>
   <body ng-app="app" ng-controller="AppController as appCtrl">
     <div class="container">
+      <div class="navbar navbar-default">
+        <ul class="nav navbar-nav">
+          <li><a ui-sref="home"><span class="glyphicon glyphicon-home"></span></a></li>
+          <li><a ui-sref="food">Food</a></li>
+          <li><a ui-sref="children">Children</a></li>
+        </ul>
+      </div>
+      <div ui-view></div>
+<!--
       <div class="row">
         <div class="col-md-8">
           <demo-food update="appCtrl.updateFood(obj)" food="appCtrl.food"></demo-food>
@@ -23,6 +33,7 @@
           <demo-children children="appCtrl.children"></demo-children>
         </div>
       </div>
+-->
     </div>
   </body>
 </html>
